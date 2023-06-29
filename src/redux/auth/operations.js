@@ -31,7 +31,7 @@ export const register = createAsyncThunk(
     }
   }
 );
-console.log(register)
+
 /*
  * POST @ /users/login
  * body: { email, password }
