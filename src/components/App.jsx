@@ -1,16 +1,37 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+
+import Form from "./Form/Form";
+
+import ContactList from "./ContactList/ContactList";
+import Filter from "./Filter/Filter";
+import { useDispatch, useSelector} from "react-redux";
+import { getError, getIsLoading } from "redux/selectors";
+import { useEffect } from "react";
+import { fetchContacts } from "redux/operations";
+
+const App = () => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+
+  return <div className="container">
+  
+     <h1>Phonebook</h1>
+      <Form />
+      <h2>Contacts</h2>
+      <Filter />
+      {(isLoading && !error && (
+        <>
+          <h2>Loading...</h2>
+        </>
+      )) || <ContactList />}
     </div>
-  );
+ 
 };
+
+
+export default App;
