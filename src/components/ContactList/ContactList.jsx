@@ -46,8 +46,8 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 import css from './ContactList.module.css';
-import { filteredContacts } from 'redux/selectors';
-import  { deleteContacts, fetchContacts } from 'redux/operations';
+import { filteredContacts } from 'redux/contacts/selectors'; 
+import  { deleteContacts, fetchContacts } from 'redux/contacts/operations';
 import { useEffect } from 'react';
 
 
@@ -66,7 +66,7 @@ const ContactList = () => {
 
  
     return (<div>
-        <ul>
+        <ul className={css.container}>
     {contactItems.map(({ id, name, number}) => (
       <li key={id}>
         <span className={css.contactName}>{name}</span>  <span className={css.contactNumber}>: {number}</span>

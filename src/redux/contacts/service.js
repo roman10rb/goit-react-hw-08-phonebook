@@ -1,6 +1,6 @@
-import { addContacts, deleteContacts, fetchContacts } from "./operations"
+import { createContacts, deleteContacts, fetchContacts } from "./operations"
 
-const arrThunk = [addContacts, deleteContacts, fetchContacts]
+const arrThunk = [createContacts, deleteContacts, fetchContacts]
 export const thunkFunction = (type)=>arrThunk.map(el=>el[type])
 export const handlePending = (state) => {
   state.isLoading = true
